@@ -1,0 +1,52 @@
+name:                toslack-lib
+version:             0.1.0.0
+github:              "oborgen/toslack"
+license:             BSD3
+author:              "Öckeröborgen IT AB"
+maintainer:          "dev@oborgen.se"
+copyright:           "2020 Öckeröborgen IT AB"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/oborgen/toslack#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- wreq >= 0.5.3.2
+- aeson >= 1.4.6.0
+- lens >= 4.17.1
+- utf8-string >= 1.0.1.1
+
+library:
+  source-dirs: src
+
+executables:
+  toslack:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - toslack-lib
+
+tests:
+  toslack-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - toslack-lib
